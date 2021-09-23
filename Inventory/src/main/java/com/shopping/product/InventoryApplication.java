@@ -30,7 +30,9 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
+import com.shopping.product.Feign.StockFeignClient;
 import com.shopping.product.model.Product;
+import com.shopping.product.model.StockDetails;
 import com.shopping.product.repository.ProductRepository;
 
 @SpringBootApplication
@@ -44,6 +46,8 @@ public class InventoryApplication implements CommandLineRunner {
 	
 	@Autowired
 	ProductRepository productRepository;
+	@Autowired
+	StockFeignClient stockFeign;
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
@@ -58,7 +62,8 @@ public class InventoryApplication implements CommandLineRunner {
 			while ((line = br.readLine()) != null)   //returns a Boolean value  
 			{  
 			String[] data = line.split(splitBy);    // use comma as separator  
-			this.productRepository.save(new Product(data[0],data[1], data[2] , Integer.parseInt(data[3]) ,data[4]));  
+			Product product= this.productRepository.save(new Product(data[0],data[1], data[2] , Integer.parseInt(data[3]) ,data[4]));  
+			stockFeign.updateStocks(new StockDetails(product.getId(),1000));
 			}  
 			br.close();
 		}   
