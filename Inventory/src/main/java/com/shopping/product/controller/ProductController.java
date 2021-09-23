@@ -25,7 +25,9 @@ import com.shopping.product.repository.ProductRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
-@CrossOrigin(origins = "http://localhost:8081")
+//@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = { "http://localhost:8081","http://localhost:3000","http://localhost:8085"})
+
 @RestController
 @RequestMapping("/api")
 @Slf4j
