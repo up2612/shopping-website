@@ -36,7 +36,7 @@ public class PlacedOrdersServiceImpl implements PlacedOrdersService{
 				if(stockFeignClient.updateStocks(orderStockDetails).equalsIgnoreCase("Updated Succesfully")) {
 					OrderDetails order = new OrderDetails(productInStock.getId(),productInStock.getName(),
 							productInStock.getDescription(),productInStock.getBrand(),
-							productInStock.getPrice(),productQuantity);
+							productInStock.getPrice(),productQuantity,productInStock.getImgURL());
 					placedOrdersRepository.save(order);
 					return true;
 				}

@@ -23,6 +23,7 @@ public class ProductDetails {
 
 	private int price;
 
-	private boolean inStock;
+
+	private String imgURL;
 	
 }

@@ -31,8 +31,10 @@ public class OrderDetails {
 	private String productBrand;
 	private Integer productPrice;
 	private Integer productQuantity;
+
+	private String imgURL;
 	public OrderDetails(Long productId, String productName, String productDescription, String productBrand,
-			Integer productPrice, Integer productQuantity) {
+			Integer productPrice, Integer productQuantity,String imgURL) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -40,6 +42,6 @@ public class OrderDetails {
 		this.productBrand = productBrand;
 		this.productPrice = productPrice;
 		this.productQuantity = productQuantity;
-	}
+		this.imgURL=imgURL;	}
 	
 }
